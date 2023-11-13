@@ -18,6 +18,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY  }}
           script_stop: true
           script: |
-            cd /home/ubuntu/deploy
+            cd /home/ubuntu/deploy/farm-management-system
             git checkout .
             git pull origin master
