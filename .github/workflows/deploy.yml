@@ -7,15 +7,17 @@ on:
 
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Install SSH key
-      run: echo "$SSH_PRIVATE_KEY" > ssh_key && chmod 600 ssh_key
-
-    - name: Deploy to EC2
-      run: |
-        ssh -i ssh_key $SSH_USER_NAME@$SSH_IP "cd deploy && touch deploy.txt"
+      - name: Deploy in EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_IP  }}
+          username: ${{ secrets.SSH_USER_NAME  }}
+          key: ${{ secrets.SSH_PRIVATE_KEY  }}
+          script_stop: true
+          script: |
+            cd /home/ubuntu/deploy
+            git checkout .
+            git pull origin master
