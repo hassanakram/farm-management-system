@@ -1,0 +1,25 @@
+# Byte-compiled / optimized Python files
+__pycache__/
+*.pyc
+
+# Local development settings
+.env
+*.sqlite3
+
+# Secret keys or sensitive information
+*.env
+
+# Static and media files (add your own media root if customized)
+/static/
+/media/
+
+# Dependency directories
+venv/
+node_modules/
+
+# Editor and IDE files
+*.swp
+*.swo
+*.swn
+.idea/
+.vscode/
